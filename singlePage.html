@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Single Page</title>
+    <style>
+        div {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <button data-xyz="page1">Page 1</button>
+    <button data-xyz="page2">Page 2</button>
+    <button data-xyz="page3">Page 3</button>
+    <div id="page1">
+        This is Page 1
+    </div>
+    <div id="page2">
+        This is Page 2
+    </div>
+    <div id="page3">
+        This is Page 3
+    </div>
+</body>
+<script>
+
+// Shows one page and hides the other two
+function showPage(x) {
+
+    // Hide all of the divs
+    document.querySelectorAll('div').forEach(div => {
+        div.style.display = 'none';
+    });
+
+    // show the div provided in the argument
+    document.querySelector(`#${x}`).style.display = 'block';
+}
+
+// wait for page to reload
+document.addEventListener('DOMContentLoaded', function() {
+
+    // select all buttons
+    document.querySelectorAll('button').forEach(button => {
+
+        // when a button is clicked, switched to that page
+        button.onclick = function() {
+            showPage(this.dataset.xyz);
+        }
+    })
+});
+</script>
+</html>
