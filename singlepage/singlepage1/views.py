@@ -11,8 +11,8 @@ def index(request):
 texts = ["Text 1", "Text 2", "Text 3"]
 
 
-def section(request, number):
-    if 1 <= number <= 3:
-        return HttpResponse(text[number - 1])
+def section(request, num):
+    if 1 <= num <= 3:
+        return HttpResponse(texts[num - 1])
     else:
         raise Http404("No such section")

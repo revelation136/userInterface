@@ -1,25 +1,19 @@
-//  show one page and hide the other two
-// parameter 'x' will wait and serve as variable to the data in which the button is click
-function showPage(x) {
+function showSection(x) {
 
-    // Hide all the divs:
-    document.querySelectorAll("div").forEach(div => {
-        div.style.display = 'none';
-    });
-
-    // show the div provided in the argument
-    document.querySelector(`#${x}`).style.display = 'block';
+//    Find section text from server
+//    fetching sections from urlpatterns
+    fetch(`/sections/${x}`)
+        .then(response => response.text())
+        .then(text => {
+            console.log(text);
+            document.querySelector('#content').innerHTML = text;
+            document.querySelector('#content2').innerHTML = text;
+        })
 }
 
-// wait for page to load
-document.addEventListener('DOMContentLoaded', function() {
-
-// Select all buttons
-document.querySelectorAll("button").forEach(button => {
-
-    // when a button is clicked, switch to that page
+//    add button functionality
+document.querySelectorAll('button').forEach(button => {
     button.onclick = function() {
-        showPage(this.dataset.xyz);
-    }
-    })
+        showSection(this.dataset.xyz);
+    };
 });
