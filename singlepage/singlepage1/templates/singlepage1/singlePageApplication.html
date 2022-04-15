@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,11 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Single Page</title>
-    <style>
-        div {
-            display: none;
-        }
-    </style>
+    <link rel="stylesheet" href="{% static 'singlepage1/style.css' %}"></link>
 </head>
 <body>
     <button data-xyz="page1">Page 1</button>
@@ -25,5 +23,5 @@
         <h1>This is Page 3</h1>
     </div>
 </body>
-<script src="singlePageApp.js"></script>
+<script src="{% static 'singlepage1/singlePageApp.js' %}"></script>
 </html>
