@@ -1,3 +1,9 @@
+// When back arrow is clicked, show previous section
+window.onpopstate = function(event) {
+    console.log(event.state.section);
+    showSection(event.state.section);
+}
+
 function showSection(x) {
 
 //    Find section text from server
@@ -14,6 +20,10 @@ function showSection(x) {
 //    add button functionality
 document.querySelectorAll('button').forEach(button => {
     button.onclick = function() {
-        showSection(this.dataset.xyz);
+        const section1 = this.dataset.xyz;
+
+        // Add the current state to the history
+        history.pushState({section: section1}, "", `section${section1}`);
+        showSection(section1);
     };
 });
