@@ -23,6 +23,7 @@ def posts(request):
     time.sleep(1)
 
     # return list of posts
+    # this JsonResponse will respond if you fetch the link. Call "xyz" to fetch the data
     return JsonResponse({
-        "posts": data
+        "xyz": data
     })
