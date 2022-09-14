@@ -38,12 +38,54 @@
             animation-name: move;
             animation-duration: 2s;
             animation-fill-mode: forwards;
-            animation-iteration-count: 2;
+            /* animation-iteration-count: infinite; */
         }
     </style>
 </head>
 <body>
     <h1 class="one">Welcome!</h1>
     <h1 class="two">Hello!</h1>
+    <input id="button1" type="button" value="Play"></input>
+    <input id="button2" type="button" value="Reset"></input>
 </body>
+<script>
+
+    // Find Heading
+    const h1 = document.querySelector('.two');
+
+    // Pause Animation by default
+    h1.style.animationPlayState = 'paused';
+
+    const button = document.querySelector('#button1');
+    const button2 = document.querySelector('#button2');
+
+    h1.addEventListener('animationend', endAnimation);
+
+    function endAnimation() {
+        button.value = 'Play';
+    }
+
+    // Wait for button to be clicked
+    button.onclick = function() {
+
+        // If animation is currently paused, begin playing it
+        if (h1.style.animationPlayState == 'paused') {
+            h1.style.animationPlayState = 'running';
+            this.value = 'Pause';
+        }
+
+        // Otherwise, pause the animation
+        else if (h1.style.animationPlayState = 'paused') {
+            this.value = 'Play';
+        }
+    }
+    
+    button2.onclick = function() {
+        h1.style.animation = "none";
+        // trigger reflow
+        h1.offsetHeight;
+        // we clear style.animation by setting it to null
+        h1.style.animation = null;
+    }
+</script>
 </html>
