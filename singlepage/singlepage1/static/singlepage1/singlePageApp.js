@@ -24,6 +24,7 @@ document.querySelectorAll('button').forEach(button => {
 
         // Add the current state to the history
         history.pushState({section: section1}, "", `section${section1}`);
+        // Value from section1 to x parameter
         showSection(section1);
     };
 });
