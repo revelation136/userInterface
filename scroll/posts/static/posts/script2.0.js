@@ -8,6 +8,20 @@ window.onscroll = function () {
     }
 };
 
+// if hide button is clicked, delete the post
+document.addEventListener('click', event => {
+    //find what click on
+    const element = event.target;
+    if (element.className === 'hide') {
+        //removing the element (in this case removing the hide button)
+        // element.remove();
+        //Removing the parent of that element (in this case the post div)
+        element.parentElement.remove();
+    }
+
+
+})
+
 async function load_content() {
     const start = counter;
     const end = start + quantity - 1;
@@ -24,6 +38,6 @@ async function load_content() {
 function add_post(content) {
     const post = document.createElement('div');
     post.className = 'post';
-    post.innerHTML = content;
+    post.innerHTML = `${content} <button class="hide">Hide</button>`;
     document.querySelector('#posts').append(post);
 };
