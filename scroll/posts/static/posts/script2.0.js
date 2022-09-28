@@ -13,10 +13,10 @@ document.addEventListener('click', event => {
     //find what click on
     const element = event.target;
     if (element.className === 'hide') {
-        //removing the element (in this case removing the hide button)
-        // element.remove();
-        //Removing the parent of that element (in this case the post div)
-        element.parentElement.remove();
+        element.parentElement.style.animationPlayState = 'running';
+        element.parentElement.addEventListener('animationend', () => {
+            element.parentElement.remove();
+        })
     }
 
 
