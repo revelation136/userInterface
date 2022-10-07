@@ -13,9 +13,9 @@
     <div id="app"></div>
 
     <script type="text/babel">
-        function Hello(props) {
+        function Hello(x) {
             return (
-                <h1>Hello</h1>
+                <h1>Hello, {x.name}!</h1>
             );
         }
 
@@ -23,9 +23,9 @@
         function App() {
             return (
                 <div>
-                    <Hello />
-                    <Hello />
-                    <Hello />
+                    <Hello name="Harry"/>
+                    <Hello name="Ron"/>
+                    <Hello name="Hermione"/>
                 </div>
             );
         }
