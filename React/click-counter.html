@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>React</title>
+    <title>Click Counter using React.js</title>
     <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -13,19 +13,25 @@
     <div id="app"></div>
 
     <script type="text/babel">
-        function Hello(x) {
-            return (
-                <h1>Hello, {x.name}!</h1>
-            );
-        }
-
+        
 
         function App() {
+            const num = 0;
+            const [count, setCount] = React.useState(num);
+
+            function updateCount() {
+            setCount(count + 1);
+            }
+
+            function resetCount() {
+                setCount(num);
+            }
+
             return (
                 <div>
-                    <Hello name="Harry"/>
-                    <Hello name="Ron"/>
-                    <Hello name="Hermione"/>
+                    <div>{count}</div>
+                    <button onClick={updateCount}>Count</button>
+                    <button onClick={resetCount}>Reset</button>
                 </div>
             );
         }
