@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Click Counter using React.js</title>
+    <title>React</title>
     <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -14,26 +14,30 @@
 
     <script type="text/babel">
         
-
         function App() {
-            const num = 0;
-            const [count, setCount] = React.useState(num);
 
-            function updateCount() {
-                setCount(count + 1);
-            }
+        const [state, setState] = React.useState({
+            num1: 1,
+            num2: 1,
+            response: "",
+            score: 0
+        });
 
-            function resetCount() {
-                setCount(num);
-            }
+        function updateResponse(event) {
+            setState({
+                
 
-            return (
-                <div>
-                    <div>Counter: {count}</div>
-                    <button onClick={updateCount}>Count</button>
-                    <button onClick={resetCount}>Reset</button>
-                </div>
-            );
+                response: event.target.value
+            });
+        }
+
+        return (
+            <div>
+                <div>{state.num1} + {state.num2}</div>
+                <input onChange={updateResponse} value={state.response}/>
+                <div>Score: {state.score}</div>
+            </div>
+        );
         }
         ReactDOM.render(<App />, document.querySelector("#app"));
     </script>
