@@ -26,15 +26,37 @@
         function updateResponse(event) {
             setState({
                 ...state,                
-
                 response: event.target.value
             });
+        }
+
+        function inputKeypress(event) {
+            if (event.key === "Enter") {
+                const answer = parseInt(state.response);
+                if (state.num1 + state.num2 === answer) {
+                    // User got question right
+                    setState({
+                    ...state,
+                    score: state.score + 1,
+                    response: "",
+                    num1: Math.ceil(Math.random() * 10),
+                    num2: Math.ceil(Math.random() * 10)
+                    });
+                } else {
+                    //  User got question wrong
+                    setState({
+                        ...state,
+                        score: state.score -1,
+                        response: ""
+                    });
+                }
+            }
         }
 
         return (
             <div>
                 <div>{state.num1} + {state.num2}</div>
-                <input onChange={updateResponse} value={state.response}/>
+                <input onKeyPress={inputKeypress} onChange={updateResponse} value={state.response}/>
                 <div>Score: {state.score}</div>
             </div>
         );
